@@ -239,7 +239,6 @@ abstract class qCal_Component {
 		$component->setParent($this);
 		// make sure if a timezone is requested that it is available...
 		$timezones = $this->getTimezones(); 
-		$tzids = array_keys($timezones);
 		// we only need to check if tzid exists if we are attaching something other than a timezone...
 		if (!($component instanceof qCal_Component_Vtimezone)) {
 			foreach ($component->getProperties() as $pname => $properties) {
@@ -247,8 +246,8 @@ abstract class qCal_Component {
 				foreach ($properties as $property) {
 					switch ($pname) {
 						case "TZID":
-							$tzid = $property->getValue();
-							if (!array_key_exists($tzid, $tzids)) {
+							$tzid = strtoupper($property->getValue());
+							if (!array_key_exists($tzid, $timezones)) {
 								throw new qCal_Exception_MissingComponent('TZID "' . $tzid . '" not defined');
 							}
 							break;
@@ -258,8 +257,8 @@ abstract class qCal_Component {
 						$param = strtoupper($param); // probably redundant...
 						switch ($param) {
 							case "TZID":
-								$tzid = $val;
-								if (!array_key_exists($tzid, $tzids)) {
+								$tzid = strtoupper($val);
+								if (!array_key_exists($tzid, $timezones)) {
 									throw new qCal_Exception_MissingComponent('TZID "' . $tzid . '" not defined');
 								}
 								break;

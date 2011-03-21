@@ -66,7 +66,7 @@ class qCal_Renderer_iCalendar extends qCal_Renderer {
 		$proptype = isset($params['VALUE']) ? $params['VALUE'] : $property->getType();
 		if ($property instanceof qCal_Property_MultiValue) {
 			$values = array();
-			foreach ($property->getValue() as $value) {
+			foreach ((array)$property->getValue() as $value) {
 				$values[] = $this->renderValue($property->getValue(), $proptype);
 			}
 			$value = implode(chr(44), $values);
