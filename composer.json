@@ -1,0 +1,21 @@
+{
+  "name": "qcal/qcal",
+  "version": "0.0.2",
+  "description": "qCal is an object-oriented, open-source iCalendar library for PHP5.",
+  "keywords": ["date", "calendar", "iCal", "ics"],
+  "homepage": "http://code.google.com/p/qcal/",
+  "type": "library",
+  "license": "LGPL",
+  "authors": [{
+    "name": "Luke Visinoni",
+    "email": "luke.visinoni@gmail.com"
+  }],
+  "require": {
+    "php": ">5.2.0"
+  },
+  "autoload": {
+    "psr-O": {
+      "qCal": "lib/"
+    }
+  }
+}
