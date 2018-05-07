@@ -90,9 +90,8 @@ abstract class qCal_Property {
 	static public function factory($name, $value, $params = array()) {
 	
 		$className = self::getClassNameFromPropertyName($name);
-		$fileName = str_replace("_", DIRECTORY_SEPARATOR, $className) . ".php";
+
 		try {
-			qCal_Loader::loadFile($fileName);
 			$class = new $className($value, $params);
 		} catch (qCal_Exception_FileNotFound $e) {
 			// if there is no class available for this property, check if it is non-standard

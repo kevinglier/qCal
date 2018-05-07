@@ -309,7 +309,6 @@ abstract class qCal_Component {
 		$component = ucfirst(strtolower($name));
 		$className = "qCal_Component_" . $component;
 		$fileName = str_replace("_", DIRECTORY_SEPARATOR, $className) . ".php";
-		qCal_Loader::loadFile($fileName);
 		$class = new $className($properties);
 		return $class;
 	
